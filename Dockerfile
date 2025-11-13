@@ -11,7 +11,9 @@ COPY . .
 
 RUN npm run build
 
+# Use PORT environment variable, default to 3000 if not set
+ENV PORT=3000
 
-EXPOSE 3020
+EXPOSE ${PORT}
 
-CMD [ "node", "dist/cli.js" ]
+CMD sh -c "node dist/cli.js --port ${PORT}"
